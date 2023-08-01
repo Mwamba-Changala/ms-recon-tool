@@ -16,6 +16,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 @Slf4j
@@ -30,6 +31,8 @@ public class FileServices {
     private HashMap<Long, List<TerminalDetailsPojo>> exTerminalDetailsPojoList;
 
     public ResponseEntity<?> createNewDirectory(FolderPojo folderPojo) {
+
+
 
         String message = "";
         try {
@@ -158,7 +161,12 @@ public class FileServices {
 
     public String makeNewDirectory(FolderPojo folderPojo) {
 
-        String path = "C:\\Users\\user\\IdeaProjects\\DirectoryCreationAndFileUpload-v0.1\\src\\main\\resources\\uploads\\" + folderPojo.getFolderName();
+//        String path = "C:\\Users\\user\\IdeaProjects\\DirectoryCreationAndFileUpload-v0.1\\src\\main\\resources\\uploads\\" + folderPojo.getFolderName();
+
+        Path currentRelativePath = Paths.get("");
+        String absolutePath = currentRelativePath.toAbsolutePath().toString();
+        String path =  absolutePath+"\\merchant_files\\" + folderPojo.getFolderName();
+
         //Creating a folder using mkdirs() method
         String message = "";
 
@@ -289,7 +297,7 @@ public class FileServices {
 
         HashMap<Long, List<ConsolidatedStatementWithLocations>> transactionsPerTerminalDetailPerSiteMap = new HashMap<>();
 
-     exTerminalDetailsPojoList.forEach((terminalDetailsKey, terminalDetailsValue) -> {
+        exTerminalDetailsPojoList.forEach((terminalDetailsKey, terminalDetailsValue) -> {
             List<ConsolidatedStatementWithLocations> consolidatedStatementWithLocationsList = new ArrayList<>();
 
             if (exStatementPojoList.containsKey(terminalDetailsKey)) {
@@ -349,7 +357,7 @@ public class FileServices {
             else {
                 log.info(terminalDetailsKey + ": Is not in statement");
             }
-            });
+        });
 
         return transactionsPerTerminalDetailPerSiteMap;
 
