@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+<form id="uploadForm" method="post" th:action="@{uploadTestFile}" enctype="multipart/form-data">
+
+    <input id="input-file" type="file" name="file" />
+    <button  type="submit">
+        Upload
+    </button>
+</form>
+
+<div th:if="${message != null}">
+<!--    [[${message}]]-->
+
+    <tr th:each="response, iStat : ${message}" >
+
+        <td th:text="${response.CustomerName}" />
+
+    </tr>
+</div>
+
+
+</body>
+</html>

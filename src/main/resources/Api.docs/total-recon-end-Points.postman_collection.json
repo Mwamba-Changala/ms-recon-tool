@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "2d72f6c7-01ad-4c0f-8d97-c11bcd5d261d",
+		"name": "total-recon-end-Points",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10507608"
+	},
+	"item": [
+		{
+			"name": "TotalUploadTest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/f5543231/OneDrive - FRG/Documents/Dev/git/ms-recon-tool/mock-data/mt meru sites.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:7718/api/v0.1/total-recon-tool/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7718",
+					"path": [
+						"api",
+						"v0.1",
+						"total-recon-tool",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TotalListFilesInTerminalFolder",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7718/api/v0.1/total-recon-tool/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7718",
+					"path": [
+						"api",
+						"v0.1",
+						"total-recon-tool",
+						"files"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

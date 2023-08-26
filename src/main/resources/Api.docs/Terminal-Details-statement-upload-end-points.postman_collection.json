@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "f6eef18b-bf23-49ce-b257-250cb4069c20",
+		"name": "Terminal-Details-statement-upload-end-points",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10507608"
+	},
+	"item": [
+		{
+			"name": "step1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/f5543231/OneDrive - FRG/Documents/Dev/git/ms-recon-tool/mock-data/mt meru sites.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:7718/api/v0.1/folderCreation/viewTerminalsFromUploadedCSV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7718",
+					"path": [
+						"api",
+						"v0.1",
+						"folderCreation",
+						"viewTerminalsFromUploadedCSV"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "step2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/f5543231/OneDrive - FRG/Documents/Dev/git/ms-recon-tool/mock-data/meru_dummy_statement.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:7718/api/v0.1/folderCreation/uploadAndReadCSV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7718",
+					"path": [
+						"api",
+						"v0.1",
+						"folderCreation",
+						"uploadAndReadCSV"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewTerminalsPerSiteLocation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7718/api/v0.1/folderCreation/viewTerminalsPerSiteLocation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7718",
+					"path": [
+						"api",
+						"v0.1",
+						"folderCreation",
+						"viewTerminalsPerSiteLocation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "step 3: check total transactions per site",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7718/api/v0.1/folderCreation/viewTotalTransactionsPerTerminalPerSite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7718",
+					"path": [
+						"api",
+						"v0.1",
+						"folderCreation",
+						"viewTotalTransactionsPerTerminalPerSite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ViewAllTerminalsUploaded",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/f5543231/OneDrive - FRG/Documents/Dev/git/ms-recon-tool/mock-data/mt meru sites.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:7718/api/v0.1/folderCreation/viewTerminalsFromUploadedCSV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7718",
+					"path": [
+						"api",
+						"v0.1",
+						"folderCreation",
+						"viewTerminalsFromUploadedCSV"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewAllTransactionsForSingleTerminal",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "terminalNumber",
+							"value": "10033963",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:7718/api/v0.1/folderCreation/viewAllTransactionsForSingleTerminal/10033963",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7718",
+					"path": [
+						"api",
+						"v0.1",
+						"folderCreation",
+						"viewAllTransactionsForSingleTerminal",
+						"10033963"
+					],
+					"query": [
+						{
+							"key": "terminalNumber",
+							"value": "10033963",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewAllTransactionsPerTerminalPerSite",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/f5543231/OneDrive - FRG/Documents/Dev/git/ms-recon-tool/mock-data/meru_dummy_statement.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:7718/api/v0.1/folderCreation/viewAllTransactionsPerTerminalPerSite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7718",
+					"path": [
+						"api",
+						"v0.1",
+						"folderCreation",
+						"viewAllTransactionsPerTerminalPerSite"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
