@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 public class FolderPojo {
 
     String folderName;
-
     String folderPath;
 
 }

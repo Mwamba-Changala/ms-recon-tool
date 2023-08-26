@@ -70,6 +70,7 @@ public class CSVHelper {
             Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 
             for (CSVRecord csvRecord : csvRecords) {
+
                 if(terminalsFromStatement.containsKey(Long.parseLong(csvRecord.get(2)))){
 
                     List<StatementPojo> statementPojoList = terminalsFromStatement.get(Long.parseLong(csvRecord.get(2)));
@@ -113,7 +114,7 @@ public class CSVHelper {
         }
     }
 
-    public static HashMap<Long,List<TerminalDetailsPojo>> listTerminalsPerSite(InputStream is) {
+    public static HashMap<Long,List<TerminalDetailsPojo>> hashMapOfTerminalsPerSite(InputStream is) {
 
         try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
              CSVParser csvParser = new CSVParser(fileReader,
@@ -152,6 +153,7 @@ public class CSVHelper {
                     terminalDetailsList.add(terminalDetailsPojo);
 
                     terminalsFromStatement.put(Long.parseLong(csvRecord.get(2)),terminalDetailsList);
+
                 }
 
             }
@@ -162,6 +164,35 @@ public class CSVHelper {
         }
     }
 
+    public static List<TerminalDetailsPojo> listTerminalsPerSite(InputStream is) {
+
+        try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+             CSVParser csvParser = new CSVParser(fileReader,
+                     CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+
+           List<TerminalDetailsPojo> terminalDetailsList = new ArrayList<>();
+
+            Iterable<CSVRecord> csvRecords = csvParser.getRecords();
+
+            for (CSVRecord csvRecord : csvRecords) {
+
+//                    List<TerminalDetailsPojo> terminalDetailsList = new ArrayList<>();
+
+                    TerminalDetailsPojo terminalDetailsPojo = new TerminalDetailsPojo(
+                            Long.parseLong(csvRecord.get(1)),
+                            Long.parseLong(csvRecord.get(2)),
+                            csvRecord.get(3),
+                            csvRecord.get(0));
+
+                    terminalDetailsList.add(terminalDetailsPojo);
+
+            }
+
+            return terminalDetailsList;
+        } catch (IOException e) {
+            throw new RuntimeException("fail to parse CSV file: " + e.getMessage());
+        }
+    }
     public static void readCSVData(List<StatementPojo> statementPojo) {
 
             statementPojo.forEach(
